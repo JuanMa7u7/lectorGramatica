@@ -15,7 +15,7 @@ class lectorGramatica:
             programa = "archivoPrograma.txt"
 
             #Se indica el fin del programa
-            print(input("\nProceso terminado\nPulsa cualquier tecla para salir"))
+            #print(input("\nProceso terminado\nPulsa cualquier tecla para salir"))
 
         except Exception as ex:
             print("\nError garrafal en: lectorGramatica.lectorGramatica()")

@@ -4,12 +4,12 @@ import os
 from AnalizadorLexico import AnalizadorLexico
 # agregamos la carpeta lector
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/lectorGramatica")
-from lector import lectorGram
+from lector import lector
 import string
 
 print (AnalizadorLexico)
 #obtengo la ruta absoluta del archivo
-l = lectorGram(os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/analizadorLexico/archivoPrograma.txt")
+l = lector(os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/analizadorLexico/archivoPrograma.txt")
 # Construimos el texto
 texto = ""
 for renglon in l.leer():
