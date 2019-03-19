@@ -1,6 +1,7 @@
 from lector import lector
 from conversor import conversorGram
 class lectorGramatica:
+
     def lectorGramatica():
         try:
 
