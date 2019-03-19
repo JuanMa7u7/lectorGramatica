@@ -1,1 +1,1 @@
-__all__ = ["lectorGramatica"]
+__all__ = ["lectorGramatica","lectorGram"]

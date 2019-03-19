@@ -1,9 +1,8 @@
-from . import lectorGram
-from . import conversorGram
+from lector import lectorGram
+from conversor import conversorGram
 class lectorGramatica:
     def lectorGramatica():
         try:
-            
             print("Iniciando\n")
             #Lee la gramatica y la almacena
             texto = lectorGram("Gramatica.txt")
@@ -18,6 +17,6 @@ class lectorGramatica:
             #Se indica el fin del programa
             print(input("\nProceso terminado\nPulsa cualquier tecla para salir"))
         except :
-            print("\nError garrafal en: main"
+            print("\nError garrafal en: lectorGramatica"
             +"\n:c")
             print(input("Pulsa cualquier tecla para salir"))
