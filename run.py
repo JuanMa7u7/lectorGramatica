@@ -7,7 +7,6 @@ from lectorGramatica import lectorGramatica as lec
 def main():
     #print(sys.path.append(os.path.dirname(
     #    os.path.abspath(__file__)) + "/lectorGramatica"))
-    print("Chingas a tu madre pinche Victor")
     lec.lectorGramatica.lectorGramatica()
 
 if __name__ == "__main__":
