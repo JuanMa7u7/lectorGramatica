@@ -1,6 +1,7 @@
 from lector import lectorGram
 from conversor import conversorGram
 class lectorGramatica:
+
     def lectorGramatica():
         try:
             print("Iniciando\n")
