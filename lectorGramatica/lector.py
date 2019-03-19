@@ -1,21 +1,27 @@
-class lectorGram:
+class lector:
     def __init__(self, path):
-        self.path=path
+        try:
+            self.path = path
+        except Exception as ex:
+            print("\nError en uno de los metodos, Clase: lector")
+            print(str(ex)+'\n')
     def leer(self):
         #Lee la gramatica
-        archivo = open(self.path, 'r')
-        linea = archivo.readlines()
-        archivo.close()
-        text = []
-#        print("La gramatica ha sido leida")
-        #Se almacena la gramatica en una lista
         try:
+            archivo = open(self.path, 'r')
+            linea = archivo.readlines()
+            archivo.close()
+            text = []
+        #print("La gramatica ha sido leida")
+        #Se almacena la gramatica en una lista
+        
             for i in range(len(linea)):
                 text.append(linea[i].rstrip().split('\n'))
             #for i in range(len(text)):
             #    print(text[i])
-        except:
-            print("\nError garrafal en clase: lectorGram \n :c")
+        except Exception as ex:
+            print("\nError garrafal en: lector.leer()")
+            print(str(ex)+'\n')
         return text
    
 
