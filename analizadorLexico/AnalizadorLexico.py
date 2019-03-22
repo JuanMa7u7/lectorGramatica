@@ -105,7 +105,7 @@ class AnalizadorLexico():
         # si el caso es un simbolo
         elif caso is self.CASO_SIMBOLO:
             # en caso de que haya un ':=' , se considera como un simbolo simple
-            if palabra[indice] is ":" and palabra[indice] is "=":
+            if palabra[indice] == ":" and palabra[indice + 1] == "=":
                 return indice + 1
             # si no, solo se toma un caracter como simbolo simple
             return indice
