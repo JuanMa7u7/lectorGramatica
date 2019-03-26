@@ -1,0 +1,6 @@
+*/__pycache__
+*.txt
+
+
+!analizadorLexico/archivoPrograma.txt
+!lectorGramatica/Gramatica.txt

@@ -1,7 +1,4 @@
-sentencia
-;
-sent_repeat
-sent_read
+pcoma
 if
 then
 end
@@ -12,13 +9,10 @@ id
 :=
 read
 write
-exp'
 <
 =
-exp_simple'
 +
 -
-term'
 *
 /
 (

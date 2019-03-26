@@ -121,16 +121,17 @@ class conversorGram:
             lineasNoTerminales3 = noTerminales.readlines()
             print("noTerminales leidos: " + str(lineasNoTerminales3))
             noTerminales.close()
+            lineasNoTerminales4 = []
+            for line in lineasNoTerminales3:
+                lineasNoTerminales4.append(line[:-1])
             simTerminales = open("lectorGramatica/SimTerminales.txt","w")
             agregar = []
+            
             for line in lineasLadoDerecho:
                 quitarRepetidos = line.split()
                 print("quitarRepetidos: " + str(quitarRepetidos) )
                 for i in quitarRepetidos:
-                    if i not in lineasNoTerminales3:
-                        print("es Noterminal: " + i)
-                        if i not in agregar:
-                            print("se agrego: " + i)
+                    if i not in lineasNoTerminales4 and i not in agregar:
                             agregar.append(str(i))
                             print("lista agregar: " + str(agregar))
                             simTerminales.write(i + '\n')
@@ -142,7 +143,7 @@ class conversorGram:
 
 
             for i in lineasSimTerminales2:
-                if i in lineasNoTerminales3:
+                if i in lineasNoTerminales4:
                     lineasSimTerminales2.remove(i)
 
             simTerminales = open("lectorGramatica/SimTerminales.txt","r")
