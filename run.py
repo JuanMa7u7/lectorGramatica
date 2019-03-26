@@ -6,6 +6,8 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/lectorGramatica")
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/AnalizadorLexico")
 from lectorGramatica import lectorGramatica as lec
 from analizadorLexico import AnalizadorLexico as analizadorLex
+from analizadorSintactico import analizadorSintactico as analizadorSin
+#from analizadorSintactico import matrizPredictiva as matrizP
 #Agregamos al sistema la ruta donde tenemos el Analizador Lexico
 def main():
     try:
@@ -16,7 +18,8 @@ def main():
         print(input("Pulsa cualquier tecla para salir"))
     except Exception as ex:
         print("Error garrafal en: main()")
-        print(str(ex)+'\n')
+        print(str(ex) + '\n')
+        print(input("Pulsa cualquier tecla para salir"))
 if __name__ == "__main__":
     main()
 

@@ -32,8 +32,9 @@ class AnalizadorLexico():
             a = AnalizadorLexico(texto)
             token = a.obtenerSiguienteToken()
             while(token.getPalabra() is not "$"):
-                print(token)
+                #print(token)
                 token = a.obtenerSiguienteToken()
+            print("Analisis lexico completo\n")
         except Exception as ex:
             print("Error garrafal en clase: AnalizadorLexico.pruebaAnalizador()")
             print(str(ex)+'\n')

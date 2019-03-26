@@ -1,7 +1,4 @@
-;
-sent_if
-sent_assign
-sent_write
+pcoma
 if
 then
 end
@@ -12,13 +9,10 @@ id
 :=
 read
 write
-op_comparacion
 <
 =
-opsuma
 +
 -
-opmult
 *
 /
 (
