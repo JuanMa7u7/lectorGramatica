@@ -16,7 +16,7 @@ class lector:
         #Se almacena la gramatica en una lista
         
             for i in range(len(linea)):
-                text.append(linea[i].rstrip().split('\n'))
+                text.append(linea[i].split('\n')[0])
             #for i in range(len(text)):
             #    print(text[i])
         except Exception as ex:

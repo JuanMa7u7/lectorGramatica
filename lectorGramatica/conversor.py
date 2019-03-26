@@ -1,3 +1,5 @@
+import string
+
 class conversorGram:
 
     def __init__(self, text):
@@ -19,7 +21,7 @@ class conversorGram:
             derivaciones.close()
             derivaciones = open("lectorGramatica/derivaciones.txt","w")
             for linea in lineasDerivaciones:
-                if linea != "":
+                if linea :
                     derivaciones.write("")
                 else:
                     derivaciones.close()
@@ -29,7 +31,7 @@ class conversorGram:
             for i in self.deriv:
                 i_1 = str(i).lstrip("['")
                 i_2 = str(i_1).rstrip("']")
-                derivaciones.write(str(i_2) + '\n')
+                derivaciones.write(str(i) + '\n')
             derivaciones.close()
             print("Derivaciones escritas en: derivaciones.txt\n")
         except Exception as ex:
@@ -45,7 +47,7 @@ class conversorGram:
             noTerminales = open("lectorGramatica/SimNoTerminales.txt","w")
             
             for linea in lineasNoTerminales:
-                if linea != "":
+                if linea :
                     noTerminales.write("")
                 else:
                     noTerminales.close()
@@ -117,16 +119,21 @@ class conversorGram:
             ladoDerecho.close()
             noTerminales = open("lectorGramatica/SimNoTerminales.txt","r")
             lineasNoTerminales3 = noTerminales.readlines()
+            print("noTerminales leidos: " + str(lineasNoTerminales3))
             noTerminales.close()
             simTerminales = open("lectorGramatica/SimTerminales.txt","w")
             agregar = []
             for line in lineasLadoDerecho:
                 quitarRepetidos = line.split()
+                print("quitarRepetidos: " + str(quitarRepetidos) )
                 for i in quitarRepetidos:
                     if i not in lineasNoTerminales3:
+                        print("es Noterminal: " + i)
                         if i not in agregar:
+                            print("se agrego: " + i)
                             agregar.append(str(i))
-                            simTerminales.write(str(i)+'\n')
+                            print("lista agregar: " + str(agregar))
+                            simTerminales.write(i + '\n')
             simTerminales.close()
             
             simTerminales = open("lectorGramatica/SimTerminales.txt","r")

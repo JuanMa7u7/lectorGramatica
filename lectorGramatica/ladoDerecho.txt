@@ -1,34 +1,34 @@
-secuencia_sent ;
-sentencia secuencia_sent ;
-sentencia secuencia_sent ;
- ;
-sent_if ;
-sent_repeat ;
-sent_assign ;
-sent_read ;
-sent_write ;
-if exp then secuencia_sent sent_if ;
-end ;
-else secuencia_sent end ;
-repeat secuencia_sent until exp ;
-id := exp ;
-read id ;
-write exp ;
-exp_simple exp ;
-op_comparacion exp_simple ;
- ;
-< ;
-= ;
-term exp_simple ;
-opsuma term exp_simple ;
- ;
-+ ;
-- ;
-factor term ;
-opmult factor term ;
- ;
-* ;
-/ ;
-( exp ) ;
-intLiteral ;
-id ;
+secuencia_sent
+sentencia secuencia_sent'
+; sentencia secuencia_sent'
+
+sent_if
+sent_repeat
+sent_assign
+sent_read
+sent_write
+if exp then secuencia_sent sent_if'
+end
+else secuencia_sent end
+repeat secuencia_sent until exp
+id := exp
+read id
+write exp
+exp_simple exp'
+op_comparacion exp_simple
+
+<
+=
+term exp_simple'
+opsuma term exp_simple'
+
++
+-
+factor term'
+opmult factor term'
+
+*
+/
+( exp )
+intLiteral
+id
