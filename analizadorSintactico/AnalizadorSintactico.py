@@ -11,6 +11,11 @@ from lector import lector
 
 class AnalizadorSintactico():
 
+    PATH_LADO_DERECHO = (os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/lectorGramatica/ladoDerecho.txt")
+    PATH_SIMBOLOS_TERMINALES =  (os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/lectorGramatica/SimTerminales.txt")
+    PATH_SIMBOLOS_NOTERMINALES = (os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/lectorGramatica/SimNoTerminales.txt")
+    PATH_SIMBOLO_INICIAL = (os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/lectorGramatica/simboloInicial.txt")
+
     __simboloInicial = "programa"
     __simbolosTerminales = [
         ";",
@@ -119,6 +124,18 @@ class AnalizadorSintactico():
         self.errores = []
         self.lexico = lex(self.__construirTexto())
         self.pila = []
+        # Leemos el archivo lado derecho y lo asignamos
+        l = lector(self.PATH_LADO_DERECHO)
+        self.__ladoDerechoGramatica = l.leer()
+        # Leemos el archivo simbolosTerminales y lo asignamos
+        l = lector(self.PATH_SIMBOLOS_TERMINALES)
+        self.__simbolosTerminales = l.leer()
+        # Leemos el archivo simbolosNoTerminales y lo asignamos
+        l = lector(self.PATH_SIMBOLOS_NOTERMINALES)
+        self.__simbolosNoTerminales = l.leer()
+        # Leemos el archivo simbolo inicial y lo asignamos
+        l = lector(self.PATH_SIMBOLO_INICIAL)
+        self.__simboloInicial = l.leer()[0]
 
 
     def comprobarSintaxis(self):
@@ -131,7 +148,7 @@ class AnalizadorSintactico():
             valor = 0
             #comprueba si es un error lexico
             if tokenActual.getTipo() is Token.ERROR:
-                self.errores.append("error Lexico, el token : " + tokenActual.getPalabra() + " no es aceptado \n")
+                self.errores.append("error Lexico, el token : " + tokenActual.getPalabra() + " no es aceptado")
                 tokenActual = self.lexico.obtenerSiguienteToken()
             elif tokenCimaPila in self.__simbolosNoTerminales:
                 #si el token actual es la cima de la pila, lo buscamos
@@ -149,7 +166,7 @@ class AnalizadorSintactico():
                         self.pila.append(palabrasDerivadas[i])
                 #si no, se agrega alos errores
                 else:
-                    self.errores.append("error Sintaxis, se esperaba: " + tokenCimaPila + " y se encontro " + tokenActual.getPalabra() + "\n")
+                    self.errores.append("error Sintaxis, se esperaba: " + tokenCimaPila + " y se encontro " + tokenActual.getPalabra() + " en elemento: " + str(self.lexico.getIndice()))
                     tokenActual = self.lexico.obtenerSiguienteToken()
             #si es un terminal
             else:
@@ -163,7 +180,7 @@ class AnalizadorSintactico():
                     self.pila.pop()
                 # si no, es un error
                 else:
-                    self.errores.append("error Sintaxis, se esperaba: " + tokenCimaPila + " y se encontro " + tokenActual.getPalabra() + "\n")
+                    self.errores.append("error Sintaxis, se esperaba: " + tokenCimaPila + " y se encontro " + tokenActual.getPalabra() + " en elemento: " + str(self.lexico.getIndice()))
                     tokenActual = self.lexico.obtenerSiguienteToken()
             #si se encontro el fin de archivo, regresamos la lista de errorres
             if tokenActual.getPalabra() == "$":
@@ -178,7 +195,7 @@ class AnalizadorSintactico():
         # Construimos el texto
         texto = ""
         for renglon in l.leer():
-            texto += renglon[0] + "\n"
+            texto += renglon + "\n"
         return texto
 
     

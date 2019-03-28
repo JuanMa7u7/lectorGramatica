@@ -25,7 +25,7 @@ class conversorGram:
                     derivaciones.write("")
                 else:
                     derivaciones.close()
-            print(f"Num. de derivaciones:{len(self.deriv)}\n")
+            # print(f"Num. de derivaciones:{len(self.deriv)}\n")
             #Escribe solo las derivaciones en derivaciones.txt
             derivaciones = open("lectorGramatica/derivaciones.txt","a+")
             for i in self.deriv:
@@ -119,7 +119,7 @@ class conversorGram:
             ladoDerecho.close()
             noTerminales = open("lectorGramatica/SimNoTerminales.txt","r")
             lineasNoTerminales3 = noTerminales.readlines()
-            print("noTerminales leidos: " + str(lineasNoTerminales3))
+            # print("noTerminales leidos: " + str(lineasNoTerminales3))
             noTerminales.close()
             lineasNoTerminales4 = []
             for line in lineasNoTerminales3:
@@ -129,11 +129,11 @@ class conversorGram:
             
             for line in lineasLadoDerecho:
                 quitarRepetidos = line.split()
-                print("quitarRepetidos: " + str(quitarRepetidos) )
+                # print("quitarRepetidos: " + str(quitarRepetidos) )
                 for i in quitarRepetidos:
                     if i not in lineasNoTerminales4 and i not in agregar:
                             agregar.append(str(i))
-                            print("lista agregar: " + str(agregar))
+                            # print("lista agregar: " + str(agregar))
                             simTerminales.write(i + '\n')
             simTerminales.close()
             

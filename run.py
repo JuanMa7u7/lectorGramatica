@@ -2,19 +2,21 @@ import sys
 import os
 # agregamos la carpeta lector
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/lectorGramatica")
-#Agregamos al sistema la ruta donde tenemos el analizador Lexico
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/AnalizadorLexico")
+#Agregamos al sistema la ruta donde tenemos el analizador Sintactico
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/AnalizadorSintactico")
 from lectorGramatica import lectorGramatica as lec
-from analizadorLexico import AnalizadorLexico as analizadorLex
-from analizadorSintactico import analizadorSintactico as analizadorSin
+from AnalizadorSintactico import AnalizadorSintactico as analizadorSin
 #from analizadorSintactico import matrizPredictiva as matrizP
 #Agregamos al sistema la ruta donde tenemos el Analizador Lexico
 def main():
     try:
-        #Leemos la gramatica y la dividimos
+        # Leemos la gramatica y la dividimos en archivos con las estructuras necesarias
         lec.lectorGramatica.lectorGramatica()
-        #Leemos el programa y obtenemos los tokens
-        analizadorLex.AnalizadorLexico.pruebaAnalizador()
+        # Creamos la instancoa del analizador Sintactico
+        sintactico = analizadorSin()
+        # Analizamos el programa sintacticamente y obtenemos errores
+        errores = sintactico.comprobarSintaxis()
+        print("Errores encontrados: " + str(len(errores)) + "\nErrores:" + str(errores))
         print(input("Pulsa cualquier tecla para salir"))
     except Exception as ex:
         print("Error garrafal en: main()")
