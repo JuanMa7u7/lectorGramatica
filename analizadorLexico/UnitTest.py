@@ -13,7 +13,7 @@ l = lector(os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/anali
 # Construimos el texto
 texto = ""
 for renglon in l.leer():
-    texto += renglon[0] + "\n"
+    texto += renglon + "\n"
 # Pasamos el texto al analizador lexico
 a = AnalizadorLexico(texto)
 token = a.obtenerSiguienteToken()

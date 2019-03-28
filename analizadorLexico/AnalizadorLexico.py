@@ -1,4 +1,3 @@
-from lector import lector
 import string
 from Token import Token as t
 import sys
@@ -6,7 +5,7 @@ import os
 # agregamos la carpeta lector
 sys.path.append(os.path.dirname(os.path.dirname(
     os.path.abspath(__file__))) + "/lectorGramatica")
-
+from lector import lector
 
 class AnalizadorLexico():
 
@@ -27,7 +26,7 @@ class AnalizadorLexico():
             # Construimos el texto
             texto = ""
             for renglon in l.leer():
-                texto += renglon[0] + "\n"
+                texto += renglon + "\n"
             # Pasamos el texto al analizador lexico
             a = AnalizadorLexico(texto)
             token = a.obtenerSiguienteToken()
@@ -106,7 +105,7 @@ class AnalizadorLexico():
         # si el caso es un simbolo
         elif caso is self.CASO_SIMBOLO:
             # en caso de que haya un ':=' , se considera como un simbolo simple
-            if palabra[indice] is ":" and palabra[indice] is "=":
+            if palabra[indice] == ":" and palabra[indice + 1] == "=":
                 return indice + 1
             # si no, solo se toma un caracter como simbolo simple
             return indice
@@ -141,3 +140,7 @@ class AnalizadorLexico():
         if string.punctuation.find(s) is -1:
             return False
         return True
+
+
+    def getIndice(self):
+        return self.__indiceActual

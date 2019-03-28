@@ -14,9 +14,10 @@ class lector:
             text = []
         #print("La gramatica ha sido leida")
         #Se almacena la gramatica en una lista
-        
+            #para cada linea de las lineas
             for i in range(len(linea)):
-                text.append(linea[i].rstrip().split('\n'))
+                #se agregan sin salto de linea
+                text.append(linea[i].replace("\n", ""))
             #for i in range(len(text)):
             #    print(text[i])
         except Exception as ex:
