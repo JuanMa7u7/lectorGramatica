@@ -159,6 +159,9 @@ class conversorGram:
             simTerminales = open("lectorGramatica/SimTerminales.txt", "w")
             for line in lineasSimTerminales2:
                 simTerminales.write(line)
+            # Agrega el simbolo de fin de archivo por defecto
+            simTerminales.write("$")
+            simTerminales.close()
             print("Simbolos terminales escritos en: SimTerminales.txt\n")
         except Exception as ex:
             print("Error garrafal en clase: conversorGram.obtenerSimbolosTerminales()")
