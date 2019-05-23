@@ -1,5 +1,7 @@
 import sys
 import os
+# Traceback para determinar el error
+import traceback
 # agregamos la carpeta lector
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/lectorGramatica")
 #Agregamos al sistema la ruta donde tenemos el analizador Sintactico
@@ -21,6 +23,7 @@ def main():
     except Exception as ex:
         print("Error garrafal en: main()")
         print(str(ex) + '\n')
+        traceback.print_tb(err.__traceback__)
         print(input("Pulsa cualquier tecla para salir"))
 if __name__ == "__main__":
     main()

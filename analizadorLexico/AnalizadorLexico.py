@@ -15,10 +15,16 @@ class AnalizadorLexico():
     CASO_SIMBOLO = 3
     CASO_OTRO = 4
 
+    # Posicionamiento
+    INDICE_ACTUAL = 0
+    RENGLON_ACTUAL = 1
+
     def __init__(self, texto):
         self.__texto = texto
         self.__indiceActual = 0
+        self.__renglonActual = 1
 
+    @staticmethod
     def pruebaAnalizador():
         try:
             l = lector(os.path.dirname(os.path.dirname(os.path.abspath(
@@ -74,11 +80,17 @@ class AnalizadorLexico():
         # si es otro caracter, se ignora (como espacios y saltos de linea)
         if tipo is t.OTRO:
             self.__indiceActual += 1
+            # si es un salto de linea, se aumenta el renglon
+            if simbolo == "\n":
+                self.__renglonActual += 1
+                AnalizadorLexico.RENGLON_ACTUAL = self.__renglonActual
             return self.obtenerSiguienteToken()
         # generamos el elemento token que sse va a retornar
         token = t(tipo, self.__texto[i:(self.__indiceActual + 1)])
         # aumentamos el indice actual 1, tomando en cuenta que es el caracter
         self.__indiceActual += 1
+        # Cambiamos la variable a nivel de clase para obtenerla a travez del proyecto
+        AnalizadorLexico.INDICE_ACTUAL = self.__indiceActual
         return token
 
     # metodo para seguir obteniendo el simbolo
@@ -144,3 +156,6 @@ class AnalizadorLexico():
 
     def getIndice(self):
         return self.__indiceActual
+
+    def getRenglon(self):
+        return self.__renglonActual
